@@ -57,6 +57,12 @@ func (this *Client) FundTransUniTransfer(param FundTransUniTransfer) (result *Fu
 	return result, err
 }
 
+// FundTransUniTransfer 单笔转账接口 https://docs.open.alipay.com/api_28/alipay.fund.trans.uni.transfer/
+func (this *Client) FundTransMoreTransfer(param FundTransMoreTransfer) (result *FundTransUniTransferRsp, err error) {
+	err = this.doRequest("POST", param, &result)
+	return result, err
+}
+
 // FundTransCommonQuery 转账业务单据查询接口 https://docs.open.alipay.com/api_28/alipay.fund.trans.common.query/
 func (this *Client) FundTransCommonQuery(param FundTransCommonQuery) (result *FundTransCommonQueryRsp, err error) {
 	err = this.doRequest("POST", param, &result)
