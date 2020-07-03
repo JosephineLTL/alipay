@@ -414,10 +414,6 @@ func (this FundTransUniTransfer) Params() map[string]string {
 	return m
 }
 
-type PayeeInfos struct {
-	PayeeInfo
-}
-
 type PayeeInfo struct {
 	Identity     string `json:"identity"`      // 必填 参与方的唯一标识
 	IdentityType string `json:"identity_type"` // 必填 参与方的标识类型，目前支持如下类型： 1、ALIPAY_USER_ID 支付宝的会员ID 2、ALIPAY_LOGON_ID：支付宝登录号，支持邮箱和手机号格式
