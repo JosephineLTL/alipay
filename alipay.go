@@ -75,10 +75,7 @@ func WithAlipayCertSn(sn string) OptionFunc {
 //
 // isProduction - 是否为生产环境，传 false 的时候为沙箱环境，用于开发测试，正式上线的时候需要改为 true
 func New(appId, privateKey string, isProduction bool, opts ...OptionFunc) (client *Client, err error) {
-	location, err := time.LoadLocation("Asia/Shanghai")
-	if err != nil {
-		return nil, err
-	}
+	location := time.Now().Location()
 
 	priKey, err := crypto4go.ParsePKCS1PrivateKey(crypto4go.FormatPKCS1PrivateKey(privateKey))
 	if err != nil {
