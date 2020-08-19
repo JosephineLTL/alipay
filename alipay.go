@@ -9,7 +9,6 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"github.com/smartwalle/crypto4go"
 	"io"
 	"io/ioutil"
@@ -62,6 +61,12 @@ func WithHTTPClient(client *http.Client) OptionFunc {
 	}
 }
 
+func WithAlipayCertSn(sn string) OptionFunc {
+	return func(c *Client) {
+		c.aliPublicCertSN = sn
+	}
+}
+
 // New 初始化支付宝客户端
 //
 // appId - 支付宝应用 id
@@ -70,7 +75,7 @@ func WithHTTPClient(client *http.Client) OptionFunc {
 //
 // isProduction - 是否为生产环境，传 false 的时候为沙箱环境，用于开发测试，正式上线的时候需要改为 true
 func New(appId, privateKey string, isProduction bool, opts ...OptionFunc) (client *Client, err error) {
-	location, err := time.LoadLocation("Asia/Chongqing")
+	location, err := time.LoadLocation("Asia/Shanghai")
 	if err != nil {
 		return nil, err
 	}
@@ -278,8 +283,6 @@ func (this *Client) doRequest(method string, param Param, result interface{}) (e
 	}
 
 	var dataStr = string(data)
-
-	fmt.Println(dataStr)
 
 	var rootNodeName = strings.Replace(param.APIName(), ".", "_", -1) + kResponseSuffix
 

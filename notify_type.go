@@ -24,6 +24,7 @@ type TradeNotification struct {
 	SellerEmail       string      `json:"seller_email"`        // 卖家支付宝账号
 	TradeStatus       TradeStatus `json:"trade_status"`        // 交易状态
 	TotalAmount       string      `json:"total_amount"`        // 订单金额
+	PayCurrency       string      `json:"pay_currency"`        //货币类型
 	ReceiptAmount     string      `json:"receipt_amount"`      // 实收金额
 	InvoiceAmount     string      `json:"invoice_amount"`      // 开票金额
 	BuyerPayAmount    string      `json:"buyer_pay_amount"`    // 付款金额

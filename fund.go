@@ -58,7 +58,7 @@ func (this *Client) FundTransUniTransfer(param FundTransUniTransfer) (result *Fu
 }
 
 // FundTransUniTransfer 多笔转账接口 https://opendocs.alipay.com/apis/api_28/alipay.fund.batch.create/
-func (this *Client) FundTransMoreTransfer(param FundTransMoreTransfer) (result *FundTransUniTransferRsp, err error) {
+func (this *Client) FundTransMoreTransfer(param FundTransMoreTransfer) (result *FundTransMoreTransferRsp, err error) {
 	err = this.doRequest("POST", param, &result)
 	return result, err
 }
